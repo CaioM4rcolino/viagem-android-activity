@@ -10,9 +10,14 @@ import br.senai.sp.jandira.viagens.R
 import br.senai.sp.jandira.viagens.model.DestinosRecentes
 
 class DestinoRecenteAdapter(
-    val listRecentes: List<DestinosRecentes>,
     val context: Context) : RecyclerView.Adapter<DestinoRecenteAdapter.Holder>() {
 
+    var listRecentes = listOf<DestinosRecentes>()
+
+    fun updateListaRecente(lista: List<DestinosRecentes>){
+        listRecentes = lista
+        notifyDataSetChanged()
+    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val view = LayoutInflater
             .from(context)
@@ -28,9 +33,10 @@ class DestinoRecenteAdapter(
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val destinosRecentes = listRecentes[position]
 
-        holder.tvNomeDestino.text = destinosRecentes.nomeDestino
-        holder.tvLocalidade.text = destinosRecentes.localidade
-        holder.tvValor.text = destinosRecentes.descValor
+        holder.tvNomeDestino.text = destinosRecentes.nome
+        holder.tvLocalidade.text = destinosRecentes.nomeCidade
+        holder.tvValor.text = destinosRecentes.valor.toString()
+
     }
 
     // inner class

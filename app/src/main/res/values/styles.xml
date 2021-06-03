@@ -23,5 +23,11 @@
         <item name="android:drawablePadding">8dp</item>
     </style>
 
+    <style name="customDialog" parent="Theme.AppCompat.Light.Dialog">
+
+        <item name="android:windowMinWidthMajor">95%</item>
+
+        <item name="android:windowMinWidthMinor">95%</item>
+    </style>
 
 </resources>

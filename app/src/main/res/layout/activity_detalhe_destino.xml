@@ -74,12 +74,12 @@
 
                 <TextView
                     android:id="@+id/tv_a_partir_de"
-                    android:layout_width="62dp"
+                    android:layout_width="69dp"
                     android:layout_height="21dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/roboto"
-                    android:text="A partir de"
+                    android:text="A partir de "
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_local" />
 
@@ -90,6 +90,7 @@
                     android:layout_marginTop="16dp"
                     android:text="R$ 500.00"
                     android:textStyle="bold"
+                    android:textSize="20sp"
                     android:textColor="@color/colorPrimaryDark"
                     app:layout_constraintStart_toEndOf="@id/tv_a_partir_de"
                     app:layout_constraintTop_toBottomOf="@id/tv_local"

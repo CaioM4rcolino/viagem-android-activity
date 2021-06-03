@@ -30,6 +30,7 @@ class DetalheDestinoActivity : AppCompatActivity() {
     lateinit var rvGaleriaFotosDestino: RecyclerView
     lateinit var galeriaFotosDestinoAdapter: GaleriaFotosDestinoAdapter
     lateinit var destinoRecente: DestinosRecentes
+    lateinit var tvAPartirDe: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -76,14 +77,21 @@ class DetalheDestinoActivity : AppCompatActivity() {
         tvLocal = findViewById(R.id.tv_local)
         tvValor = findViewById(R.id.tv_valor)
         tvTextoDescricao = findViewById(R.id.tv_texto_descricao)
+        tvAPartirDe = findViewById(R.id.tv_a_partir_de)
 
         destinoRecente =
             intent.getSerializableExtra("destino") as DestinosRecentes
 
+    if(destinoRecente.valor == 0.0){
+        tvValor.text = " GRÁTIS "
+        tvAPartirDe.visibility = TextView.GONE
+    }
+    else{
+        tvValor.text = "$ ${String.format("%.2f", destinoRecente.valor)}"
+    }
 
         collapsingToolbar.title = destinoRecente.nome
-        tvLocal.text = destinoRecente.nome
-        tvValor.text = destinoRecente.valor.toString()
+        tvLocal.text = "${destinoRecente.nomeCidade} - ${destinoRecente.siglaEstado}"
         tvTextoDescricao.text = destinoRecente.descricao
 
         if (destinoRecente.urlFoto !== "")

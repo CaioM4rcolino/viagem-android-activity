@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import br.senai.sp.jandira.viagens.R
 import br.senai.sp.jandira.viagens.model.Foto
+import br.senai.sp.jandira.viagens.ui.DialogImageDetail
 import com.bumptech.glide.Glide
 
 class GaleriaFotosDestinoAdapter(var context: Context):
@@ -36,7 +38,9 @@ class GaleriaFotosDestinoAdapter(var context: Context):
         Glide.with(context).load(foto.url).into(holder.imageFoto)
 
         holder.imageFoto.setOnClickListener {
-            Toast.makeText(context, "${foto.id}", Toast.LENGTH_SHORT).show()
+            val dialog = DialogImageDetail()
+            dialog.updateImageUrl(foto.url)
+            dialog.show((context as AppCompatActivity).supportFragmentManager, "")
         }
     }
 
